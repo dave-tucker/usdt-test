@@ -1,0 +1,5 @@
+[workspace]
+members = ["clock", "usdt-test", "usdt-test-common", "xtask"]
+
+[patch.crates-io]
+aya = { git = "https://github.com/dave-tucker/aya", branch = "usdt" }

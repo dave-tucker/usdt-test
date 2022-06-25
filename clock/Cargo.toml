@@ -1,0 +1,12 @@
+[package]
+name = "clock"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+anyhow = "1"
+probe = "0.3"
+log = "0.4"
+simplelog = "0.12"
+tokio = { version = "1.18", features = ["macros", "rt", "rt-multi-thread", "net", "signal", "time"] }

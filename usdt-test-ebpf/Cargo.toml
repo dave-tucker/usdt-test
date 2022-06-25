@@ -1,0 +1,38 @@
+[package]
+name = "usdt-test-ebpf"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+aya-bpf = { git = "https://github.com/aya-rs/aya", branch = "main", features = [ "usdt", "cookie" ]  }
+aya-log-ebpf = { git = "https://github.com/aya-rs/aya-log", branch = "main" }
+usdt-test-common = { path = "../usdt-test-common" }
+
+[[bin]]
+name = "usdt-test"
+path = "src/main.rs"
+
+[profile.dev]
+opt-level = 3
+debug = false
+debug-assertions = false
+overflow-checks = false
+lto = true
+panic = "abort"
+incremental = false
+codegen-units = 1
+rpath = false
+
+[profile.release]
+lto = true
+panic = "abort"
+codegen-units = 1
+
+[workspace]
+members = []
+
+[patch.crates-io]
+aya-bpf = { git = "https://github.com/dave-tucker/aya", branch = "usdt" }
+
+[patch."https://github.com/aya-rs/aya"]
+aya-bpf = { git = "https://github.com/dave-tucker/aya", branch = "usdt" }
